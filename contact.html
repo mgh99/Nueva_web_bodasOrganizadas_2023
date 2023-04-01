@@ -96,19 +96,21 @@
       <div class="container">
          <h1 class="contact_taital">¡Ponte en contacto con nosotros!</h1>
          <div class="email_text">
-            <div class="form-group">
-               <input type="text" class="email-bt" placeholder="Nombre" name="Email">
-            </div>
-            <div class="form-group">
-               <input type="text" class="email-bt" placeholder="Numero de telefono" name="Email">
-            </div>
-            <div class="form-group">
-               <input type="text" class="email-bt" placeholder="Email" name="Email">
-            </div>
-            <div class="form-group">
-               <textarea class="massage-bt" placeholder="Mensaje" rows="5" id="comment" name="Massage"></textarea>
-            </div>
-            <div class="send_btn"><a href="#">Enviar</a></div>
+            <form action="send_email.php" method="POST">
+                <div class="form-group">
+                   <input type="text" class="email-bt" placeholder="Nombre" name="Name">
+                </div>
+                <div class="form-group">
+                   <input type="text" class="email-bt" placeholder="Numero de telefono" name="Phone">
+                </div>
+                <div class="form-group">
+                   <input type="text" class="email-bt" placeholder="Email" name="Email">
+                </div>
+                <div class="form-group">
+                   <textarea class="massage-bt" placeholder="Mensaje" rows="5" id="comment" name="Message"></textarea>
+                </div>
+                <div class="send_btn"><input type="submit" name="submit" value="Enviar"></div>
+            </form>
          </div>
       </div>
    </div>
