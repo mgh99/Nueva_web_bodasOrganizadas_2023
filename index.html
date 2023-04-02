@@ -12,13 +12,17 @@
    <!-- descripción del contenido de la web -->
    <title>BodasOrganizadas</title>
    <meta name="keywords" content="bodas, matrimonios, celebraciones, eventos, amor">
-   <meta name="description" content="Bodas Organizadas es una empresa de Palencia dedicada a la organización de bodas únicas y personalizadas. Nos especializamos en crear diseños personalizados para cada pareja, sin la necesidad de trabajar con proveedores exclusivos. Nos aseguramos de que cada detalle sea perfecto y que cada boda sea única e inolvidable. Contáctanos para hacer de tu boda un día realmente especial.">
+   <meta name="description"
+      content="Bodas Organizadas es una empresa de Palencia dedicada a la organización de bodas únicas y personalizadas. Nos especializamos en crear diseños personalizados para cada pareja, sin la necesidad de trabajar con proveedores exclusivos. Nos aseguramos de que cada detalle sea perfecto y que cada boda sea única e inolvidable. Contáctanos para hacer de tu boda un día realmente especial.">
    <meta name="author" content="María González Herrero">
    <!--Funciones de javascript-->
    <script src="js/scroll.js"></script>
    <script src="js/precios.js"></script>
+   <script src="js/cookies.js"></script>
    <!-- bootstrap css -->
    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
    <!-- style css -->
    <link rel="stylesheet" type="text/css" href="css/style.css">
    <link rel="stylesheet" type="text/css" href="css/normalice.css">
@@ -38,11 +42,75 @@
    <!-- owl stylesheets -->
    <link rel="stylesheet" href="css/owl.carousel.min.css">
    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
-      media="screen">
+   <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+   media="screen">-->
 </head>
 
 <body>
+   <!-- Modal de configuración de cookies -->
+   <div class="modal fade" id="cookie-config-modal" tabindex="-1" role="dialog"
+      aria-labelledby="cookie-config-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="cookie-config-modal-label">Configuración de cookies</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <ul class="nav nav-tabs" id="cookie-config-tabs" role="tablist">
+                  <li class="nav-item">
+                     <a class="nav-link active" id="cookie-strict-tab" data-toggle="tab" href="#cookie-strict"
+                        role="tab" aria-controls="cookie-strict" aria-selected="true">Cookies estrictamente
+                        necesarias</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" id="cookie-analytics-tab" data-toggle="tab" href="#cookie-analytics" role="tab"
+                        aria-controls="cookie-analytics" aria-selected="false">Cookies de análisis</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" id="cookie-marketing-tab" data-toggle="tab" href="#cookie-marketing" role="tab"
+                        aria-controls="cookie-marketing" aria-selected="false">Cookies de marketing</a>
+                  </li>
+               </ul>
+               <div class="tab-content" id="cookie-config-tabs-content">
+                  <div class="tab-pane fade show active" id="cookie-strict" role="tabpanel"
+                     aria-labelledby="cookie-strict-tab">
+                     <p>Estas cookies son necesarias para el funcionamiento del sitio web y no pueden ser desactivadas
+                        en nuestros sistemas. Por lo general, sólo se establecen en respuesta a acciones realizadas por
+                        usted que equivalen a una solicitud de servicios, como establecer sus preferencias de
+                        privacidad, iniciar sesión o completar formularios. Usted puede configurar su navegador para
+                        bloquear o alertarle sobre estas cookies, pero algunas partes del sitio no funcionarán. Estas
+                        cookies no almacenan información de identificación personal.</p>
+                  </div>
+                  <div class="tab-pane fade" id="cookie-analytics" role="tabpanel"
+                     aria-labelledby="cookie-analytics-tab">
+                     <p>Estas cookies nos permiten contar las visitas y las fuentes de tráfico, para que podamos medir y
+                        mejorar el rendimiento de nuestro sitio. Nos ayudan a saber qué páginas son las más y menos
+                        populares y a ver cómo los visitantes se mueven por el sitio. Toda la información que recogen
+                        estas cookies es agregada y, por lo tanto, anónima. Si usted no permite estas cookies, no
+                        sabremos cuándo visitó nuestro sitio y no podremos evaluar si funcionó correctamente.</p>
+                  </div>
+                  <div class="tab-pane fade" id="cookie-marketing" role="tabpanel"
+                     aria-labelledby="cookie-marketing-tab">
+                     <p>Estas cookies pueden ser establecidas por nuestro sitio web o por nuestros socios publicitarios.
+                        Pueden ser utilizadas por esas empresas para crear un perfil de sus intereses y mostrarle
+                        anuncios relevantes en otros sitios. No almacenan directamente información personal, sino que se
+                        basan en la identificación única de su navegador y dispositivo de Internet. Si no permite estas
+                        cookies, experimentará publicidad menos específica.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Rechazar todas las cookies</button>
+               <button type="button" class="btn btn-primary" id="accept-cookies-config">Aceptar cookies
+                  seleccionadas</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- FIN del modal de configuración de cookies -->
    <!-- header seccion de empezar -->
    <div class="header_section">
       <div class="header_main">
@@ -64,12 +132,6 @@
                      <li class="nav-item">
                         <a class="nav-link" href="#planes" onclick="scrollToSection('planes')">Planes</a>
                      </li>
-                     <!--<li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link " href="blog.html">Blog</a>
-                     </li>-->
                      <li class="nav-item">
                         <a class="nav-link" href="about.html">Nuestro trabajo</a>
                      </li>
@@ -105,33 +167,40 @@
                <div class="carousel-item active" data-bs-interval="11000">
                   <div class="container">
                      <h1 class="banner_taital">Más de 10 años de experiencia</h1>
-                     <p class="banner_text">Durante todos estos años han sido numerosas las parejas que han confiado en nosotros para la planificación de sus bodas 
-                     y eventos. La experiencia nos permite actuar de la forma más eficiente para que tu día sea un día para disfrutar y no un día de imprevistos. </p>
+                     <p class="banner_text">Durante todos estos años han sido numerosas las parejas que han confiado en
+                        nosotros para la planificación de sus bodas
+                        y eventos. La experiencia nos permite actuar de la forma más eficiente para que tu día sea un
+                        día para disfrutar y no un día de imprevistos. </p>
                      <!--<div class="read_bt"><a href="#">Get A Quote</a></div>-->
                   </div>
                </div>
                <div class="carousel-item">
                   <div class="container">
                      <h1 class="banner_taital">La mejor red de proveedores</h1>
-                     <p class="banner_text">Si hay algo que nos define es la red de profesionales con la que colaboramos. A diferencia de otras empresas no trabajamos 
-                     en exclusiva con ningún proveedor. Gracias a esto podemos ofreceros los mejores profesionales, siempre adaptados a vuestro presupuesto.</p>
+                     <p class="banner_text">Si hay algo que nos define es la red de profesionales con la que
+                        colaboramos. A diferencia de otras empresas no trabajamos
+                        en exclusiva con ningún proveedor. Gracias a esto podemos ofreceros los mejores profesionales,
+                        siempre adaptados a vuestro presupuesto.</p>
                      <!--<div class="read_bt"><a href="#">Get A Quote</a></div>-->
                   </div>
                </div>
                <div class="carousel-item">
                   <div class="container">
                      <h1 class="banner_taital">Un acompañamiento excelente</h1>
-                     <p class="banner_text">Queréis estar seguros de poder contar con una empresa disponible no sólo durante vuestro día, sino durante todo el proceso. 
-                     Podéis estar tranquilos, lo más importante para nosotros es crear desde el inicio una relación de confianza y acompañaros durante 
-                     todo el tiempo que dure la planificación.</p>
+                     <p class="banner_text">Queréis estar seguros de poder contar con una empresa disponible no sólo
+                        durante vuestro día, sino durante todo el proceso.
+                        Podéis estar tranquilos, lo más importante para nosotros es crear desde el inicio una relación
+                        de confianza y acompañaros durante
+                        todo el tiempo que dure la planificación.</p>
                      <!--<div class="read_bt"><a href="#">Get A Quote</a></div>-->
                   </div>
                </div>
                <div class="carousel-item">
                   <div class="container">
                      <h1 class="banner_taital">100% de satisfacción</h1>
-                     <p class="banner_text">El resultado de los valores y premisas que definen a Bodas Organizadas nos permite, con orgullo, compartir la satisfacción 
-                     por la que nuestros clientes siempre nos elogian y recomiendan.</p>
+                     <p class="banner_text">El resultado de los valores y premisas que definen a Bodas Organizadas nos
+                        permite, con orgullo, compartir la satisfacción
+                        por la que nuestros clientes siempre nos elogian y recomiendan.</p>
                      <!--<div class="read_bt"><a href="#">Get A Quote</a></div>-->
                   </div>
                </div>
@@ -142,158 +211,138 @@
    </div>
    <!-- header section end -->
 
-  <!--AQUI METO COSAS VACIAS-->
-  <section>
-   <div>
-      <p class="cosasVacias">
-         fhuwerhgeuihgiewrhgiurhtgiuerhguirehguihrtetguih
-      </p>
+   <!--parte de modal para las cookies-->
+   <!-- Modal -->
+   <div id="myModal" class="modal">
+      <!-- Modal contenido -->
+      <div class="modal-content">
+         <span class="close">&times;</span>
+         <h2>Aceptar cookies y política de privacidad</h2>
+         <p>Este sitio web utiliza cookies para mejorar su experiencia de navegación. Al hacer clic en Aceptar, acepta
+            nuestra política de privacidad y el uso de cookies. Si desea obtener más información, consulte nuestra
+            política de privacidad.</p>
+         <div class="buttons">
+            <button id="aceptar">Aceptar</button>
+            <button id="rechazar">Rechazar</button>
+         </div>
+      </div>
    </div>
-  </section>
-  <!--FIN DE METER COSAS VACIAS-->
+
+
+   <!--FIN del modal de las cookies-->
+
+   <!--AQUI METO COSAS VACIAS-->
+   <section>
+      <div>
+         <p class="cosasVacias">
+            fhuwerhgeuihgiewrhgiurhtgiuerhguirehguihrtetguih
+         </p>
+      </div>
+   </section>
+   <!--FIN DE METER COSAS VACIAS-->
 
    <!--Quien es Bodas organizadas-->
-   <section id = "conocenos">
-         <div class="col"></div>
-         <div class = "aboutme2 col-12">
-            <h1 class="services_taital-aboutme">¿Quién es Bodas Organizadas?</h1>
-            <div class="amgeneral">
-               <div class="amgeneral-img">
-                  <img src="./images/nati-herrero.jpeg" class="rounded float-start" alt="foto Nati Herrero Wedding planner Palencia">
-               </div>
-               <div class="amgeneral-pf">
-                  <p>
-                     <strong style="color: goldenrod">Nati Herrero Antolín</strong> dio sus primeros pasos como Organizadora de Bodas o Wedding Planner tras formarse en el Instituto Español Wedding y Event Planner. 
-                     Tras adquirir conocimientos y experiencia en protocolo, trato con proveedores y clientes, planificación de eventos o organización de bodas, -entre otros-,
-                     fundó Bodas Organizadas con el propósito de crear el evento perfecto.
-                  </p>
-                  <br/>
-                  <p>
-                     ¿Y cómo es el evento perfecto? Nati lo resume como el desarrollo de la forma más cómoda para el cliente, es decir, la solución que le permite disfrutar de la organización 
-                     de su día soñado ahorrando tiempo y dinero, y superando las expectativas soñadas por el cliente para ese día.
-                  </p>
-               </div>
+   <section id="conocenos">
+      <div class="col"></div>
+      <div class="aboutme2 col-12">
+         <h1 class="services_taital-aboutme">¿Quién es Bodas Organizadas?</h1>
+         <div class="amgeneral">
+            <div class="amgeneral-img">
+               <img src="./images/nati-herrero.jpeg" class="rounded float-start"
+                  alt="foto Nati Herrero Wedding planner Palencia">
             </div>
-            <div class="amparrafos">
+            <div class="amgeneral-pf">
                <p>
-                  Tras más de 10 años organizando bodas, fiestas y eventos de todo tipo, cuenta con una veteranía sobre la que basa los pilares de su trabajo:
-                  <strong style="color:goldenrod; font-size: 20px;">perfección, dedicación y entusiasmo.</strong> 
+                  <strong style="color: goldenrod">Nati Herrero Antolín</strong> dio sus primeros pasos como
+                  Organizadora de Bodas o Wedding Planner tras formarse en el Instituto Español Wedding y Event Planner.
+                  Tras adquirir conocimientos y experiencia en protocolo, trato con proveedores y clientes,
+                  planificación de eventos o organización de bodas, -entre otros-,
+                  fundó Bodas Organizadas con el propósito de crear el evento perfecto.
+               </p>
+               <br />
+               <p>
+                  ¿Y cómo es el evento perfecto? Nati lo resume como el desarrollo de la forma más cómoda para el
+                  cliente, es decir, la solución que le permite disfrutar de la organización
+                  de su día soñado ahorrando tiempo y dinero, y superando las expectativas soñadas por el cliente para
+                  ese día.
                </p>
             </div>
          </div>
-         <div class="col"></div>
+         <div class="amparrafos">
+            <p>
+               Tras más de 10 años organizando bodas, fiestas y eventos de todo tipo, cuenta con una veteranía sobre la
+               que basa los pilares de su trabajo:
+               <strong style="color:goldenrod; font-size: 20px;">perfección, dedicación y entusiasmo.</strong>
+            </p>
+         </div>
+      </div>
+      <div class="col"></div>
    </section>
    <!--FIN Quien es Bodas organizadas-->
    <!--Planes de precios-->
    <section id="planes">
       <div class="col"></div>
-      <div class = "planes2">
+      <div class="planes2">
          <h1 class="services_taital-planes">Planes</h1>
-            <div class = "cards col-12">
-               <div class="card shadow">
-                  <ul class="planesul">
-                     <li class="pack planessli">Básico</li>
-                     <li id="basic" class="precio bottom-bar planessli">&euro;40</li>
-                     <li class="bottom-bar planessli">1 consulta al mes</li>
-                     <li class="bottom-bar ">Servicio personalizado</li>
-                     <li class="bottom-bar planessli ">Servicio exclusivo</li>
-                     <li class="planessli"><button class="btn">Empecemos!</button></li>
-                  </ul>
-               </div>
-
-               <div class="card active">
-                  <ul class="planesul">
-                     <li class="pack planessli">Popular</li>
-                     <li id="popular" class="precio bottom-bar planessli">&euro;100</li>
-                     <li class="bottom-bar planessli">3 consulta al mes</li>
-                     <li class="bottom-bar  planessli">Servicio personalizado</li>
-                     <li class="bottom-bar planessli">Servicio exclusivo</li>
-                     <li class="bottom-bar planessli">Primera consulta gratis</li>
-                     <li class="planessli"><button class="btn active-btn ">Empecemos!</button></li>
-                  </ul>
-               </div>
-
-               <div class="card shadow">
-                  <ul class="planesul">
-                     <li class="pack planessli">Profesional</li>
-                     <li id="profesional" class="precio bottom-bar planessli">&euro;210</li>
-                     <li class="bottom-bar planessli">6 consulta al mes</li>
-                     <li class="bottom-bar planessli">Servicio personalizado</li>
-                     <li class="bottom-bar planessli">Servicio exclusivo</li>
-                     <li class="bottom-bar planessli">Servicio disponible 24/7</li>
-                     <li class="planessli"><button class="btn">Empecemos!</button></li>
-                  </ul>
-               </div>
+         <div class="cards col-12">
+            <div class="card shadow">
+               <ul class="planesul">
+                  <li class="pack planessli">Básico</li>
+                  <li id="basic" class="precio bottom-bar planessli">&euro;40</li>
+                  <li class="bottom-bar planessli">1 consulta al mes</li>
+                  <li class="bottom-bar ">Servicio personalizado</li>
+                  <li class="bottom-bar planessli ">Servicio exclusivo</li>
+                  <li class="planessli"><button class="btn">Empecemos!</button></li>
+               </ul>
             </div>
+
+            <div class="card active">
+               <ul class="planesul">
+                  <li class="pack planessli">Popular</li>
+                  <li id="popular" class="precio bottom-bar planessli">&euro;100</li>
+                  <li class="bottom-bar planessli">3 consulta al mes</li>
+                  <li class="bottom-bar  planessli">Servicio personalizado</li>
+                  <li class="bottom-bar planessli">Servicio exclusivo</li>
+                  <li class="bottom-bar planessli">Primera consulta gratis</li>
+                  <li class="planessli"><button class="btn active-btn ">Empecemos!</button></li>
+               </ul>
+            </div>
+
+            <div class="card shadow">
+               <ul class="planesul">
+                  <li class="pack planessli">Profesional</li>
+                  <li id="profesional" class="precio bottom-bar planessli">&euro;210</li>
+                  <li class="bottom-bar planessli">6 consulta al mes</li>
+                  <li class="bottom-bar planessli">Servicio personalizado</li>
+                  <li class="bottom-bar planessli">Servicio exclusivo</li>
+                  <li class="bottom-bar planessli">Servicio disponible 24/7</li>
+                  <li class="planessli"><button class="btn">Empecemos!</button></li>
+               </ul>
+            </div>
+         </div>
       </div>
       <div class="col"></div>
    </section>
    <!--FIN Planes de precios-->
 
-   <!-- services section start -->
-   <!--<div class="services_section layout_padding">
-      <div class="container">
-         <h1 class="services_taital">Services </h1>
-         <p class="services_text">There are many variations of passages of Lorem Ipsum available, but the majority have
-            suffered alteration</p>
-         <div class="services_section_2">
-            <div class="row">
-               <div class="col-md-4">
-                  <div><img src="images/img-1.png" class="services_img"></div>
-                  <div class="btn_main"><a href="#">Rafting</a></div>
-               </div>
-               <div class="col-md-4">
-                  <div><img src="images/img-2.png" class="services_img"></div>
-                  <div class="btn_main active"><a href="#">Hiking</a></div>
-               </div>
-               <div class="col-md-4">
-                  <div><img src="images/img-3.png" class="services_img"></div>
-                  <div class="btn_main"><a href="#">Camping</a></div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div> -->
-   <!-- services section end -->
-   <!-- about section start -->
-   <!--<div class="about_section layout_padding">
-      <div class="container-fluid">
-         <div class="row">
-            <div class="col-md-6">
-               <div class="about_taital_main">
-                  <h1 class="about_taital">About Us</h1>
-                  <p class="about_text">There are many variations of passages of Lorem Ipsum available, but the majority
-                     have suffered alteration in some form, by injected humour, or randomised words which don't look
-                     even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure
-                     there isn't anything embarrassing hidden in the middle of text. All </p>
-                  <div class="readmore_bt"><a href="#">Read More</a></div>
-               </div>
-            </div>
-            <div class="col-md-6 padding_right_0">
-               <div><img src="images/about-img.png" class="about_img"></div>
-            </div>
-         </div>
-      </div>
-   </div>-->
-   <!-- about section end -->
    <!--AQUI EMPIEZA EL VIDEO PRESENTACION-->
-   <section >
+   <section>
       <div class="trailerbo">
          <div class="blog_section layout_padding">
             <div class="container">
-             <h1 class="services_taital-gif">Tú boda perfecta</h1>
+               <h1 class="services_taital-gif">Tú boda perfecta</h1>
                <div class="play_icon_main">
                   <div class="">
                      <a href="#">
-                      <img class="gifnovios" src="images/presentacion-novios.gif" loop autoplay>
+                        <img class="gifnovios" src="images/presentacion-novios.gif" loop autoplay>
                      </a>
                   </div>
                </div>
             </div>
          </div>
-      </div>   
+      </div>
    </section>
-   
+
    <!--AQUI FINALIZA EL VIDEO PRESENTACION-->
    <!-- TESTIMONIOS-->
    <div class="client_section layout_padding">
@@ -310,13 +359,15 @@
                   <div class="carousel-item active">
                      <div class="client_main">
                         <div class="box_left">
-                           <p class="lorem_text">Se ve que está muy al día . Te da muchísimas ideas que nunca creerías que son posibles. 
-                              Nati Herrero Antolín es muy amable. Desde que  la contratas está a tu entera disposición y eso hace que estés muy tranquila. 
+                           <p class="lorem_text">Se ve que está muy al día . Te da muchísimas ideas que nunca creerías
+                              que son posibles.
+                              Nati Herrero Antolín es muy amable. Desde que la contratas está a tu entera disposición y
+                              eso hace que estés muy tranquila.
                               Os recomiendo Bodas Organizadas.</p>
                         </div>
                         <div class="box_right">
                            <div class="client_taital_left">
-                             <!-- <div class="client_img"><img src="images/wedding.jpg"></div>-->
+                              <!-- <div class="client_img"><img src="images/wedding.jpg"></div>-->
                               <div class="quick_icon"><img src="images/quick-icon.png"></div>
                            </div>
                            <div class="client_taital_right">
@@ -329,7 +380,8 @@
                   <div class="carousel-item">
                      <div class="client_main">
                         <div class="box_left">
-                           <p class="lorem_text">Nos ayudó muchísimo en nuestra boda, no hubiese sido posible sin Nati 😘 y eso 
+                           <p class="lorem_text">Nos ayudó muchísimo en nuestra boda, no hubiese sido posible sin Nati
+                              😘 y eso
                               que no se lo pusimos nada fácil 😅, trabajazo por su parte.
                               Gracias Nati 😘😘</p>
                         </div>
@@ -347,7 +399,8 @@
                   <div class="carousel-item">
                      <div class="client_main">
                         <div class="box_left">
-                           <p class="lorem_text">Una escelente compañera de trabajo, yo como fotógrafo nos facilita el nuestro. Muchas gracias.</p>
+                           <p class="lorem_text">Una escelente compañera de trabajo, yo como fotógrafo nos facilita el
+                              nuestro. Muchas gracias.</p>
                         </div>
                         <div class="box_right">
                            <div class="client_taital_left">
@@ -366,23 +419,6 @@
       </div>
    </div>
    <!-- FIN TESTIMONIOS-->
-   <!-- choose section start -->
-   <!--
-   <div class="choose_section layout_padding">
-      <div class="container">
-         <h1 class="choose_taital">Why Choose Us</h1>
-         <p class="choose_text">There are many variations of passages of Lorem Ipsum available, but the majority have
-            suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-            believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything
-            embarrassing hidden in the middle of text. All </p>
-         <div class="read_bt_1"><a href="#">Read More</a></div>
-         <div class="newsletter_box">
-            <h1 class="let_text">Let Start Talk with Us</h1>
-            <div class="getquote_bt"><a href="#">Get A Quote</a></div>
-         </div>
-      </div>
-   </div>-->
-   <!-- choose section end -->
    <!-- footer section start -->
    <div class="footer_section layout_padding">
       <div class="container">
@@ -394,17 +430,20 @@
          </div>
          <div class="social_icon">
             <ul>
-               <li><a href="https://www.facebook.com/bodasorganizadas/" target="_blank"><img src="images/fb-icon.png"></a></li>
-               <li><a href="https://www.instagram.com/bodasorganizadas.es/?hl=es" target="_blank"><img src="images/instagram-icon.png"></a></li>
+               <li><a href="https://www.facebook.com/bodasorganizadas/" target="_blank"><img
+                        src="images/fb-icon.png"></a></li>
+               <li><a href="https://www.instagram.com/bodasorganizadas.es/?hl=es" target="_blank"><img
+                        src="images/instagram-icon.png"></a></li>
             </ul>
-         </div>         
+         </div>
       </div>
    </div>
    <!-- footer section end -->
    <!-- copyright section start -->
    <div class="copyright_section">
       <div class="container">
-         <p class="copyright_text">2023 Todos los derechos son reservados. Diseñado por:  María González Herrero</p>
+         <p class="copyright_text">2023 Todos los derechos son reservados. Diseñado por: María González Herrero</p>
+         <a class="copyright_text" href="politica_privacidad.html" target="_blank">Política de privacidad</a>
       </div>
    </div>
    <!-- copyright section end -->
@@ -419,7 +458,17 @@
    <script src="js/custom.js"></script>
    <!-- javascript -->
    <script src="js/owl.carousel.js"></script>
-   <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+   <!--<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>-->
+   <!--Bootstrap javascript-->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js"
+      integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>
